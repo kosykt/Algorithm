@@ -37,11 +37,13 @@ public class HW1 {
 //  Task 1.4
 
         List<Object> myList = new ArrayList<>(Arrays.asList( i, s, myClass));
+        long l = System.nanoTime();
         for (int j = 0; j < myList.size(); j++) {
             if (myList.get(j).equals(101)){
                 System.out.println("Hello world");
             }
         }
+        System.out.println(System.nanoTime() - l);
     }
 }
 
