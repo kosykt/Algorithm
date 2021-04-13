@@ -1,0 +1,2 @@
+public class Les1 {
+}
