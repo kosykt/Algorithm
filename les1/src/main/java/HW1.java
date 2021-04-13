@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class HW1 {
 
     /*
@@ -25,10 +29,19 @@ public class HW1 {
     public static void main(String[] args) {
 
 //  Task 1.3
+
         int i = 101;
         String s = "Hello";
         MyClass myClass = new MyClass(010, "World");
 
+//  Task 1.4
+
+        List<Object> myList = new ArrayList<>(Arrays.asList( i, s, myClass));
+        for (int j = 0; j < myList.size(); j++) {
+            if (myList.get(j).equals(101)){
+                System.out.println("Hello world");
+            }
+        }
     }
 }
 
