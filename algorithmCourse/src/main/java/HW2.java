@@ -66,9 +66,9 @@ class HomeWork{
         System.out.println("Двоичный поиск " + (System.nanoTime() - l));
     }
 
-    public void task2_3(int[] bigArray) {
+    public void task2_3(int[] array) {
         long l = System.nanoTime();
-        Arrays.sort(bigArray);
+        Arrays.sort(array);
         System.out.println("Сортировка через sort " + (System.nanoTime() - l));
     }
 
@@ -87,69 +87,42 @@ class HomeWork{
             }
         }
         System.out.println("Сортировка пузырьком " + (System.nanoTime() - l));
-
-        int lastIndex = array.length - 1;
-        int firstIndex = 0;
-        int numberOfShifts = 1;
-        while (numberOfShifts != 0) {
-            numberOfShifts = 0;
-            for (int i = firstIndex; i < lastIndex; i++) {
-                if (array[i] > array[i+1]){
-                    numberOfShifts += 1;
-                    int buff = array[i];
-                    array[i] = array[i+1];
-                    array[i+1] = buff;
-                }
-            }
-            lastIndex--;
-
-            for (int i = lastIndex+1; i > firstIndex; i--) {
-                if (array[i] < array[i-1]){
-                    numberOfShifts += 1;
-                    int buff = array[i];
-                    array[i] = array[i-1];
-                    array[i-1] = buff;
-                }
-            }
-            firstIndex++;
-        }
-        System.out.println("Улучшенная сортировка пузырьком " + (System.nanoTime() - l));
     }
 
-    public void task2_5(int[] bigArr) {
+    public void task2_5(int[] array) {
         long l = System.nanoTime();
         int min;
         int index = 0;
-        for (int i = 0; i < bigArr.length - 1; i++) {
-            min = bigArr[i];
-            for (int j = i+1; j < bigArr.length; j++) {
-                if (bigArr[j] <= min) {
-                    min = bigArr[j];
+        for (int i = 0; i < array.length - 1; i++) {
+            min = array[i];
+            for (int j = i+1; j < array.length; j++) {
+                if (array[j] <= min) {
+                    min = array[j];
                     index = j;
                 }
             }
-            int buff = bigArr[i];
-            bigArr[i] = min;
-            bigArr[index] = buff;
+            int buff = array[i];
+            array[i] = min;
+            array[index] = buff;
         }
         System.out.println("Сортировка методом выбора " + (System.nanoTime() - l));
     }
 
-    public void task2_6(int[] bigArr) {
+    public void task2_6(int[] array) {
         long l = System.nanoTime();
         int num;
-        for (int i = 1; i < bigArr.length; i++) {
-            num = bigArr[i];
+        for (int i = 1; i < array.length; i++) {
+            num = array[i];
             int j = i - 1;
             for (; j >= 0; j--) {
-                if (bigArr[j] > num) {
-                    bigArr[j+1] = bigArr[j];
+                if (array[j] > num) {
+                    array[j+1] = array[j];
                 }
                 else {
                     break;
                 }
             }
-            bigArr[j+1] = num;
+            array[j+1] = num;
         }
         System.out.println("Сортировка методом вставки " + (System.nanoTime() - l));
     }
