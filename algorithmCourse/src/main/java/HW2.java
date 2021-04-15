@@ -67,12 +67,14 @@ class HomeWork{
     }
 
     public void task2_3(int[] array) {
+//  Task 2.3
         long l = System.nanoTime();
         Arrays.sort(array);
         System.out.println("Сортировка через sort " + (System.nanoTime() - l));
     }
 
     public void task2_4(int[] array) {
+//  Task 2.4
         long l = System.nanoTime();
         int check = 1;
         while (check != 0) {
@@ -90,6 +92,7 @@ class HomeWork{
     }
 
     public void task2_5(int[] array) {
+//  Task 2.5
         long l = System.nanoTime();
         int min;
         int index = 0;
@@ -109,6 +112,7 @@ class HomeWork{
     }
 
     public void task2_6(int[] array) {
+//  Task 2.6
         long l = System.nanoTime();
         int num;
         for (int i = 1; i < array.length; i++) {
