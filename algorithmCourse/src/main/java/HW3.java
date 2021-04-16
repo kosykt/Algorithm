@@ -29,6 +29,7 @@ public class HW3 {
     }
 
     private static void task3_3() {
+        //Task 3.3
         OneDirectionLinkedList<String> hobbiesArrayList = new OneDirectionLinkedList<>();
 
         System.out.println("OneDirectionLinkedList is empty: " + String.valueOf(hobbiesArrayList.empty()));
