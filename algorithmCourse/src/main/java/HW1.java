@@ -32,7 +32,7 @@ public class HW1 {
 
         int i = 101;
         String s = "Hello";
-        MyClass myClass = new MyClass(010, "World");
+        MyClass1 myClass = new MyClass1(010, "World");
 
 //  Task 1.4
 
@@ -47,11 +47,11 @@ public class HW1 {
     }
 }
 
-class MyClass{
+class MyClass1{
     private int num;
     private String txt;
 
-    public MyClass(int num, String txt) {
+    public MyClass1(int num, String txt) {
         this.num = num;
         this.txt = txt;
     }
