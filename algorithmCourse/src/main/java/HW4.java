@@ -56,6 +56,92 @@ public class HW4 {
             System.out.println(priorityQueue.poll());
         }
         System.out.println("Task 4.4 nanoTime: " + (System.nanoTime() - t4) + "\n-------------");
+
+        //Task 4.5
+        MyStackList4 msl4 = new MyStackList4();
+
+        long t5 = System.nanoTime();
+        
+        msl4.push("Artem", 20);
+        msl4.push("Boris", 30);
+
+        msl4.display();
+
+        while (!msl4.isEmpty()){
+            System.out.println("Элемент: " + msl4.pop() + " удален из списка");
+        }
+        System.out.println("Task 4.5 nanoTime: " + (System.nanoTime() - t5) + "\n-------------");
+    }
+}
+
+class MyLink4 {
+    public String name;
+    public int age;
+    public MyLink4 next;
+
+    public MyLink4(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void display(){
+        System.out.println("Name: " + this.name + "; Age: " + this.age);
+    }
+}
+
+class MyLinkedList4{
+    public MyLink4 first;
+
+    public MyLinkedList4(){
+        first = null;
+    }
+
+    public boolean isEmpty(){
+        return (first == null);
+    }
+
+    public void insert(String name, int age){
+        MyLink4 newMylink4 = new MyLink4(name, age);
+        newMylink4.next = first;
+        first = newMylink4;
+    }
+
+    public MyLink4 delete(){
+        MyLink4 temp = first;
+        first = first.next;
+        return temp;
+    }
+
+    public void  display(){
+        MyLink4 current = first;
+        while (current != null){
+            current.display();
+            current = current.next;
+        }
+    }
+}
+
+class MyStackList4 {
+    private MyLinkedList4 myList;
+
+    public MyStackList4(){
+        myList = new MyLinkedList4();
+    }
+
+    public void push(String name, int age){
+        myList.insert(name, age);
+    }
+
+    public String pop(){
+        return myList.delete().name;
+    }
+
+    public boolean isEmpty(){
+        return myList.isEmpty();
+    }
+
+    public void display(){
+        myList.display();
     }
 }
 
