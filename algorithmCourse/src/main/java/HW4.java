@@ -41,6 +41,21 @@ public class HW4 {
             deque.poll().print();
         }
         System.out.println("Task 4.3 nanoTime: " + (System.nanoTime() - t3) + "\n-------------");
+
+        //Task 4.4
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        long t4 = System.nanoTime();
+
+        priorityQueue.add(1);
+        priorityQueue.add(7);
+        priorityQueue.add(2);
+        priorityQueue.offer(5);
+
+        while (!priorityQueue.isEmpty()){
+            System.out.println(priorityQueue.poll());
+        }
+        System.out.println("Task 4.4 nanoTime: " + (System.nanoTime() - t4) + "\n-------------");
     }
 }
 
