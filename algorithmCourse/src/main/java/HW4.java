@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class HW4 {
 
@@ -15,7 +13,7 @@ public class HW4 {
         while (!stack1.empty()){
             stack1.pop().print();
         }
-        System.out.println("Task 4.1 time: " + (System.nanoTime() - t1) + "\n-------------");
+        System.out.println("Task 4.1 nanoTime: " + (System.nanoTime() - t1) + "\n-------------");
 
         //Task 4.2
         Queue<MyClass4> queue = new LinkedList<>();
@@ -27,10 +25,22 @@ public class HW4 {
         while (!queue.isEmpty()){
             queue.poll().print();
         }
-        System.out.println("Task 4.2 time: " + (System.nanoTime() - t2) + "\n-------------");
+        System.out.println("Task 4.2 nanoTime: " + (System.nanoTime() - t2) + "\n-------------");
 
-        
+        //Task 4.3
+        Deque<MyClass4> deque = new ArrayDeque<>();
 
+        long t3 = System.nanoTime();
+        deque.add(new MyClass4(0, 1));
+        deque.add(new MyClass4(2, 3));
+
+        deque.addFirst(new MyClass4(4, 4));
+        deque.addLast(new MyClass4(5, 5));
+
+        while (!deque.isEmpty()){
+            deque.poll().print();
+        }
+        System.out.println("Task 4.3 nanoTime: " + (System.nanoTime() - t3) + "\n-------------");
     }
 }
 
