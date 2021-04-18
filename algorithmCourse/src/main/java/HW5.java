@@ -23,6 +23,7 @@ public class HW5 {
 
         //Task 5.2
         task5_21();
+        System.out.println("--------------------");
         task5_22(1);
         System.out.println("--------------------");
 
@@ -34,7 +35,7 @@ public class HW5 {
         while (!myStack5.empty()){
             myStack5.pop();
         }
-        System.out.println("5.3-1 Stack is empty" + "\n--------------------");
+        System.out.println("task 5.3-1: Stack is empty" + "\n--------------------");
 
         MyStack5 myRecursiveStack5 = new MyStack5();
         myRecursiveStack5.add(new Person5("Sidorov", 20));
@@ -42,7 +43,18 @@ public class HW5 {
 
         myRecursiveStack5.popAllRecursively();
         myRecursiveStack5.peek();
-        System.out.println("5.3-2 Stack is empty" + "\n--------------------");
+        System.out.println("task 5.3-2: Recursive stack is empty" + "\n--------------------");
+
+        //task 5.4
+        int result = 1, n = 5;
+        for (int i = 1; i <= n; i++) {
+            result = result * i;
+        }
+        System.out.println("task 5.4-1: Факториал 5! равен:" + result + "\n--------------------");
+        System.out.println("task 5.4-2: Факториал 4! равен:" + task5_1(4) + "\n--------------------");
+
+        //task 5.5
+
     }
 
     private static int task5_1(int n) {
