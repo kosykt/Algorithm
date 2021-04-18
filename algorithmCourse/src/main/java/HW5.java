@@ -16,23 +16,36 @@ public class HW5 {
 //
 //        https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8F
 
+        System.out.println("task 5.1: " + task5_1(4) + "\n--------------------");
+
         //Task 5.2
-        recurs5_21();
-        recurs5_22(1);
+        task5_21();
+        task5_22(1);
+        System.out.println("--------------------");
 
         //Task 5.3
+
     }
 
-    private static int recurs5_22(int i) {
-        System.out.println("Hello world!");
+    private static int task5_1(int n) {
+        int result = 1;
+        if (n == 1 || n == 0) {
+            return result;
+        }
+        result = n * task5_1(n-1);
+        return result;
+    }
+
+    private static void task5_21() {
+        System.out.println("task 5.2-2");
+//        recurs5_21();
+    }
+
+    private static int task5_22(int i) {
+        System.out.println("task 5.2-1");
         if (i == 1){
             return i;
         }
-        return recurs5_22(i);
-    }
-
-    public static void recurs5_21() {
-        System.out.println("Hello world!");
-//        recurs5_21();
+        return task5_22(i);
     }
 }
