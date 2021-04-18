@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class HW5 {
 
     public static void main(String[] args) {
@@ -24,7 +27,22 @@ public class HW5 {
         System.out.println("--------------------");
 
         //Task 5.3
+        MyStack5 myStack5 = new MyStack5();
+        myStack5.add(new Person5("Ivanov", 20));
+        myStack5.add(new Person5("Petrov", 30));
 
+        while (!myStack5.empty()){
+            myStack5.pop();
+        }
+        System.out.println("5.3-1 Stack is empty" + "\n--------------------");
+
+        MyStack5 myRecursiveStack5 = new MyStack5();
+        myRecursiveStack5.add(new Person5("Sidorov", 20));
+        myRecursiveStack5.add(new Person5("Mikhailov", 30));
+
+        myRecursiveStack5.popAllRecursively();
+        myRecursiveStack5.peek();
+        System.out.println("5.3-2 Stack is empty" + "\n--------------------");
     }
 
     private static int task5_1(int n) {
@@ -37,15 +55,63 @@ public class HW5 {
     }
 
     private static void task5_21() {
-        System.out.println("task 5.2-2");
+        System.out.println("task 5.2-1");
 //        recurs5_21();
     }
 
     private static int task5_22(int i) {
-        System.out.println("task 5.2-1");
+        System.out.println("task 5.2-2");
         if (i == 1){
             return i;
         }
         return task5_22(i);
+    }
+}
+
+class Person5 {
+    String name;
+    int age;
+
+    public Person5(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class MyStack5 {
+    private final ArrayList<Person5> stack = new ArrayList<>();
+    private int top = -1;
+
+    public MyStack5() {
+    }
+
+    public void add(Person5 el) {
+        this.stack.add(el);
+        this.top++;
+    }
+
+    public boolean empty() {
+        return (this.top == -1);
+    }
+
+    public void pop() {
+        this.peek();
+        this.stack.remove(this.top);
+        this.top--;
+    }
+
+    public void popAllRecursively() {
+        this.peek();
+        this.stack.remove(this.top);
+        this.top--;
+        if (!this.empty()) {
+            this.popAllRecursively();
+        }
+    }
+
+    public void peek() {
+        if (this.top != -1) {
+            this.stack.get(this.top);
+        }
     }
 }
