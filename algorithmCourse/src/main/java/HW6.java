@@ -15,6 +15,8 @@ public class HW6 {
         tree.insert(new Person6("Igor", 33, 02));
         tree.insert(new Person6("Vladimir", 44, 03));
         tree.insert(new Person6("Viktor", 55, 04));
+
+        tree.find(02).display();
     }
 }
 
