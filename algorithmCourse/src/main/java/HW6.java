@@ -5,10 +5,11 @@ public class HW6 {
         System.out.println("Примеры использования древовидной структуры:\n" +
                 "\t- Форматы данных типа json, xml, html;\n" +
                 "\t- Деревья решений в машинном обучении;\n" +
-                "\t- Большинство файловых систем.\n");
+                "\t- Большинство файловых систем." + "\n--------------------");
 
         //Task 6.2
         Tree tree = new Tree();
+        System.out.println("Tree is created" + "\n--------------------");
 
         //Task 6.3
         tree.insert(new Person6("Ivan", 22, 01));
@@ -17,6 +18,7 @@ public class HW6 {
         tree.insert(new Person6("Viktor", 55, 04));
 
         tree.find(02).display();
+        System.out.println("--------------------");
     }
 }
 
