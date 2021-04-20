@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 public class HW6 {
 
     public static void main(String[] args) {
@@ -29,10 +32,36 @@ public class HW6 {
 
         //Task 6.5
         tree.delete(02);
-
-        long l = System.nanoTime();
+        long l1 = System.nanoTime();
         tree.displayTree();
-        System.out.println(System.nanoTime() - l);
+        System.out.println(System.nanoTime() - l1);
+
+        System.out.println("--------------------");
+
+        //Task 6.6
+        int[] arrayToSort;
+        arrayToSort = new int[10];
+        Random rand = new Random();
+        for (int i = 0; i<10; i++) {
+            arrayToSort[i] = rand.nextInt(10);
+        }
+
+        System.out.println(Arrays.toString(arrayToSort));
+
+        MyHeap heap = new MyHeap();
+        long l2 = System.nanoTime();
+
+        heap.heapSort(arrayToSort);
+
+        System.out.println(Arrays.toString(arrayToSort));
+        System.out.println(System.nanoTime() - l2);
+        System.out.println("--------------------");
+
+        //Task 6.7
+        System.out.println("Пример сбалансированного дерева:\n" +
+                "\t- Красно-чёрное дерево;\n" +
+                "\t- АВЛ-дерево;\n" +
+                "\t- TreeMap в Java реализован на основе красно-чёрных деревьев.\n");
     }
 }
 
@@ -231,4 +260,65 @@ class Tree{
         System.out.println("Обратный");
         postOrder(current);
     }
+}
+
+class MyHeap {
+    private int heapSize;
+
+    public MyHeap() {
+    }
+
+    private static int right(int i) {
+        return 2 * i + 2;
+    }
+
+    private static int left(int i) {
+        return 2 * i + 1;
+    }
+
+    public static void swap(int[] sourceArray, int i, int j) {
+        int temp = sourceArray[i];
+        sourceArray[i] = sourceArray[j];
+        sourceArray[j] = temp;
+    }
+
+    public int getHeapSize() {
+        return this.heapSize;
+    }
+
+    public void buildHeap(int[] sourceArray) {
+        this.heapSize = sourceArray.length;
+        for (int i = sourceArray.length / 2; i >= 0; i--) {
+            heapify(sourceArray, i);
+        }
+    }
+
+    public void heapify(int[] sourceArray, int i) {
+        int leftChild = left(i);
+        int rightChild = right(i);
+        int largestChild = i;
+
+        if (leftChild < this.heapSize && sourceArray[i] < sourceArray[leftChild]) {
+            largestChild = leftChild;
+        }
+
+        if (rightChild < this.heapSize && sourceArray[largestChild] < sourceArray[rightChild]) {
+            largestChild = rightChild;
+        }
+
+        if (i != largestChild) {
+            swap(sourceArray, i, largestChild);
+            heapify(sourceArray, largestChild);
+        }
+    }
+
+    public void heapSort(int[] sourceArray) {
+        buildHeap(sourceArray);
+        while (this.heapSize > 1) {
+            swap(sourceArray, 0, this.heapSize - 1);
+            this.heapSize--;
+            heapify(sourceArray, 0);
+        }
+    }
+
 }
