@@ -12,9 +12,9 @@ public class HW6 {
         System.out.println("Tree is created" + "\n--------------------");
 
         //Task 6.3
-        tree.insert(new Person6("Ivan", 22, 01));
+        tree.insert(new Person6("Ivan", 22, 11));
         tree.insert(new Person6("Igor", 33, 02));
-        tree.insert(new Person6("Vladimir", 44, 03));
+        tree.insert(new Person6("Vladimir", 44, 43));
         tree.insert(new Person6("Viktor", 55, 04));
 
         tree.find(02).display();
@@ -28,7 +28,11 @@ public class HW6 {
         System.out.println("--------------------");
 
         //Task 6.5
-        
+        tree.delete(02);
+
+        long l = System.nanoTime();
+        tree.displayTree();
+        System.out.println(System.nanoTime() - l);
     }
 }
 
@@ -99,6 +103,22 @@ class Tree{
         return current;
     }
 
+    private void preOrder(Node rootNode){
+        if (rootNode != null){
+            rootNode.display();
+            preOrder(rootNode.left);
+            preOrder(rootNode.right);
+        }
+    }
+
+    private void postOrder(Node rootNode){
+        if (rootNode != null){
+            postOrder(rootNode.left);
+            postOrder(rootNode.right);
+            rootNode.display();
+        }
+    }
+
     private void inOrder(Node rootNode){
         if (rootNode != null){
             inOrder(rootNode.left);
@@ -128,10 +148,87 @@ class Tree{
     }
 
     public  boolean delete (int id){
-    return true;
+        Node current = root;
+        Node parent = root;
+
+        boolean isLeft =true;
+
+        while(current.person6.id != id){
+            parent = current;
+            if (id < current.person6.id){
+                isLeft = true;
+                current = current.left;
+            } else {
+                isLeft = false;
+                current = current.right;
+            }
+            if (current == null){
+                return false;
+            }
+        }
+
+        if (current.left == null && current.right == null){
+            if (current == root){
+                root = null;
+            } else if (isLeft){
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+        } else if (current.right == null){
+            if (current == null){
+                root = current.left;
+            } else if (isLeft){
+                parent.left = current.left;
+            } else {
+                parent.right = current.right;
+            }
+        } else if (current.left == null){
+            if (current == null){
+                root = current.right;
+            } else if (isLeft){
+                parent.left = current.right;
+            } else {
+                parent.right = current.right;
+            }
+        } else {
+            Node successor = getSuccessor(current);
+            if (current == root){
+                root = successor;
+            } else if (isLeft){
+                parent.left = successor;
+            } else {
+                parent.right = successor;
+            }
+            successor.left = current.left;
+        }
+        return true;
+    }
+
+    public Node getSuccessor(Node node) {
+        Node successorParent = node;
+        Node successor = node;
+        Node current = node.right;
+
+        while (current != null){
+            successorParent = successor;
+            successor = current;
+            current = current.left;
+        }
+        if (successor != node.right){
+            successorParent.left = successor.right;
+            successor.right = node.right;
+        }
+        return successor;
     }
 
     public void displayTree(){
-
+        Node current = root;
+        System.out.println("Симметнричный");
+        inOrder(root);
+        System.out.println("Прямой");
+        preOrder(root);
+        System.out.println("Обратный");
+        postOrder(current);
     }
 }
