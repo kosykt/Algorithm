@@ -19,6 +19,16 @@ public class HW6 {
 
         tree.find(02).display();
         System.out.println("--------------------");
+
+        //Task 6.4
+        System.out.print("Min: ");
+        tree.min().display();
+        System.out.print("Max: ");
+        tree.max().display();
+        System.out.println("--------------------");
+
+        //Task 6.5
+        
     }
 }
 
@@ -87,6 +97,34 @@ class Tree{
             }
         }
         return current;
+    }
+
+    private void inOrder(Node rootNode){
+        if (rootNode != null){
+            inOrder(rootNode.left);
+            rootNode.display();
+            inOrder(rootNode.right);
+        }
+    }
+
+    public Node min(){
+        Node current, last = null;
+        current =root;
+        while (current != null){
+            last = current;
+            current = current.left;
+        }
+        return last;
+    }
+
+    public Node max(){
+        Node current, last = null;
+        current =root;
+        while (current != null){
+            last = current;
+            current = current.right;
+        }
+        return last;
     }
 
     public  boolean delete (int id){
